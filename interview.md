@@ -130,3 +130,36 @@ This bank contains 120 questions organized by difficulty. Use the numbered scrip
 118. How do you design recovery when the Ansible controller is unavailable?
 119. What are the main risks of using `command` and `shell` in production?
 120. Design an end-to-end Ansible platform for secure, observable, reversible delivery.
+
+## HackerRank-Style Automation Challenges: 121-150
+
+121. Write a playbook that creates a user only when it is absent.
+122. Write a playbook that installs packages from a variable list and reports failures.
+123. Write a role that renders a service config and restarts only when content changes.
+124. Write a playbook that parses a JSON API response and asserts a required field.
+125. Write a playbook that retries an HTTP health check with a bounded delay.
+126. Write a playbook that finds files older than 30 days and deletes them in check mode first.
+127. Write a playbook that compares desired ports with firewall rules and reports drift.
+128. Write a playbook that processes hosts in batches of two.
+129. Write a playbook that rolls back a release when a health task fails.
+130. Write a playbook that runs a long command asynchronously and polls its job ID.
+131. Write a custom filter that converts host objects into a name-to-IP map.
+132. Write a role test that proves a second run produces no changes.
+133. Validate required variables before any remote task runs.
+134. Write an audit event with change ID and inventory host.
+135. Safely handle a missing optional file.
+136. Use a vaulted password without exposing it in output.
+137. Group dynamic inventory instances by environment tag.
+138. Ensure an Azure resource group has required tags.
+139. Discover AWS instances and verify their security group.
+140. Fail deployment when a certificate has fewer than 14 days remaining.
+141. Validate backup size and timestamp.
+142. Restore the previous release from a symlink.
+143. Execute a database migration exactly once.
+144. Skip production changes unless an approval variable is true.
+145. Collect per-host results on localhost.
+146. Use `block`, `rescue`, and `always` for cleanup.
+147. Limit a destructive task to an explicit allow-list.
+148. Convert command output into structured facts.
+149. Test a role under two operating-system families.
+150. Build an idempotent deployment playbook with validation, rollback, and audit output.
