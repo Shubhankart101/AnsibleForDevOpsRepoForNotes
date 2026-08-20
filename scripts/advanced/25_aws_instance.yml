@@ -1,0 +1,13 @@
+---
+- name: Provision an EC2 instance
+  hosts: localhost
+  connection: local
+  collections: [amazon.aws]
+  tasks:
+    - amazon.aws.ec2_instance:
+        name: devtrack-app
+        instance_type: t3.micro
+        image_id: ami-REPLACE_ME
+        wait: true
+        tags:
+          Environment: dev

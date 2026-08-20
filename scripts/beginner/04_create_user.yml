@@ -1,0 +1,10 @@
+---
+- name: Create deployment user
+  hosts: all
+  become: true
+  tasks:
+    - ansible.builtin.user:
+        name: deploy
+        groups: users
+        create_home: true
+        state: present

@@ -1,0 +1,7 @@
+---
+- name: Check certificate expiry
+  hosts: app
+  gather_facts: false
+  tasks:
+    - ansible.builtin.command: openssl x509 -checkend 1209600 -noout -in /etc/ssl/devtrack.crt
+      changed_when: false

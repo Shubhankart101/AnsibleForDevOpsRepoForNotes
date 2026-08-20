@@ -1,0 +1,9 @@
+---
+- name: Roll out one host at a time
+  hosts: app
+  serial: 1
+  tasks:
+    - ansible.builtin.command: /opt/devtrack/bin/restart
+      changed_when: true
+    - ansible.builtin.uri:
+        url: http://127.0.0.1:8080/health

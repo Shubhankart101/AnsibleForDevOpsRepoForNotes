@@ -1,0 +1,10 @@
+---
+- name: Handle deployment failure
+  hosts: app
+  tasks:
+    - block:
+        - ansible.builtin.command: /opt/devtrack/bin/deploy
+          changed_when: true
+      rescue:
+        - ansible.builtin.command: /opt/devtrack/bin/rollback
+          changed_when: true

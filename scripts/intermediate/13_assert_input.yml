@@ -1,0 +1,10 @@
+---
+- name: Validate release input
+  hosts: localhost
+  gather_facts: false
+  vars:
+    release_id: "{{ lookup('env', 'RELEASE_ID') }}"
+  tasks:
+    - ansible.builtin.assert:
+        that: release_id | length > 0
+        fail_msg: RELEASE_ID is required

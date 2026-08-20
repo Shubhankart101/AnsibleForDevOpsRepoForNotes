@@ -1,0 +1,11 @@
+---
+- name: Demonstrate check mode safety
+  hosts: app
+  become: true
+  tasks:
+    - ansible.builtin.command: /opt/devtrack/bin/version
+      check_mode: false
+      changed_when: false
+      register: version
+    - ansible.builtin.debug:
+        var: version.stdout

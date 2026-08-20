@@ -1,0 +1,11 @@
+---
+- name: Install a package list
+  hosts: all
+  become: true
+  vars:
+    packages: [git, jq, unzip]
+  tasks:
+    - ansible.builtin.package:
+        name: "{{ item }}"
+        state: present
+      loop: "{{ packages }}"

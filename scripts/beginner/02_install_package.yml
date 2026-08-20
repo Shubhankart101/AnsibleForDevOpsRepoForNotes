@@ -1,0 +1,8 @@
+---
+- name: Install a package
+  hosts: all
+  become: true
+  tasks:
+    - ansible.builtin.package:
+        name: curl
+        state: present

@@ -1,0 +1,9 @@
+---
+- name: Copy a configuration file
+  hosts: all
+  become: true
+  tasks:
+    - ansible.builtin.copy:
+        content: "managed=true\n"
+        dest: /etc/devtrack.conf
+        mode: '0644'

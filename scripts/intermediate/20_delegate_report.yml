@@ -1,0 +1,10 @@
+---
+- name: Collect deployment result
+  hosts: app
+  gather_facts: false
+  tasks:
+    - ansible.builtin.set_fact:
+        deployment_result: success
+    - ansible.builtin.debug:
+        msg: "{{ inventory_hostname }}={{ hostvars[inventory_hostname].deployment_result }}"
+      delegate_to: localhost

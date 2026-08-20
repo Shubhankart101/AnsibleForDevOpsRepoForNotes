@@ -1,0 +1,12 @@
+---
+- name: Find old releases
+  hosts: app
+  become: true
+  tasks:
+    - ansible.builtin.find:
+        paths: /opt/devtrack/releases
+        age: 30d
+        file_type: directory
+      register: old_releases
+    - ansible.builtin.debug:
+        var: old_releases.files

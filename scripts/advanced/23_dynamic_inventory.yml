@@ -1,0 +1,7 @@
+---
+- name: Query dynamic inventory
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - ansible.builtin.command: ansible-inventory -i inventory.aws_ec2.yml --graph
+      changed_when: false

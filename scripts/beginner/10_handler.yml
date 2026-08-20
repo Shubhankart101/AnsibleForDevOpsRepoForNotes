@@ -1,0 +1,14 @@
+---
+- name: Use a handler
+  hosts: all
+  become: true
+  tasks:
+    - ansible.builtin.copy:
+        content: "enabled=true\n"
+        dest: /etc/devtrack-feature.conf
+      notify: Restart cron
+  handlers:
+    - name: Restart cron
+      ansible.builtin.service:
+        name: cron
+        state: restarted

@@ -1,0 +1,16 @@
+---
+- name: Enforce Azure resource tags
+  hosts: localhost
+  connection: local
+  collections: [azure.azcollection]
+  tasks:
+    - azure_rm_resource:
+        api_version: '2022-09-01'
+        resource_group: devtrack
+        provider: Microsoft.Resources
+        resource_type: tags
+        resource_name: default
+        body:
+          properties:
+            Environment: production
+            ManagedBy: ansible

@@ -1,0 +1,8 @@
+---
+- name: Gather facts concurrently
+  hosts: all
+  gather_facts: true
+  strategy: free
+  tasks:
+    - ansible.builtin.debug:
+        msg: "{{ inventory_hostname }}={{ ansible_facts.distribution }}"

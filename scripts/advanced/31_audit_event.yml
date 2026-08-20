@@ -1,0 +1,13 @@
+---
+- name: Emit an audit event
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - ansible.builtin.uri:
+        url: "{{ audit_endpoint }}"
+        method: POST
+        body_format: json
+        body:
+          change: "{{ change_id }}"
+          result: success
+        status_code: 202

@@ -1,0 +1,11 @@
+---
+- name: Run recovery validation
+  hosts: recovery
+  become: true
+  serial: 1
+  tasks:
+    - ansible.builtin.command: /opt/devtrack/bin/restore-latest
+      changed_when: true
+    - ansible.builtin.uri:
+        url: http://127.0.0.1:8080/health
+        status_code: 200

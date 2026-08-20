@@ -1,0 +1,10 @@
+---
+- name: Validate backup metadata
+  hosts: backup
+  become: true
+  tasks:
+    - ansible.builtin.stat:
+        path: /var/backups/devtrack/latest.tar.gz
+      register: backup_file
+    - ansible.builtin.assert:
+        that: backup_file.stat.exists and backup_file.stat.size > 0

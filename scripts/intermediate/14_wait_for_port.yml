@@ -1,0 +1,8 @@
+---
+- name: Wait for application port
+  hosts: app
+  tasks:
+    - ansible.builtin.wait_for:
+        host: 127.0.0.1
+        port: 8080
+        timeout: 30

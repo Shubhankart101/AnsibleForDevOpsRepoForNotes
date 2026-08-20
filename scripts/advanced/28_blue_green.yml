@@ -1,0 +1,11 @@
+---
+- name: Switch blue green traffic
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - ansible.builtin.uri:
+        url: https://api.example.test/traffic
+        method: PUT
+        body_format: json
+        body: { active: green }
+        status_code: 200

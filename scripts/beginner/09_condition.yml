@@ -1,0 +1,7 @@
+---
+- name: Run a conditional task
+  hosts: all
+  tasks:
+    - ansible.builtin.debug:
+        msg: "This is a Linux host"
+      when: ansible_facts.os_family == 'Debian'

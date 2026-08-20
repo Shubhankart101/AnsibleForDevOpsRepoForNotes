@@ -1,0 +1,15 @@
+---
+- name: Harden SSH
+  hosts: all
+  become: true
+  tasks:
+    - ansible.builtin.lineinfile:
+        path: /etc/ssh/sshd_config
+        regexp: '^PermitRootLogin'
+        line: PermitRootLogin no
+      notify: Restart sshd
+  handlers:
+    - name: Restart sshd
+      ansible.builtin.service:
+        name: sshd
+        state: restarted

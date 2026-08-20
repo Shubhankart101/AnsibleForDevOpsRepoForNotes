@@ -1,0 +1,8 @@
+---
+- name: Use variables
+  hosts: all
+  vars:
+    environment_name: development
+  tasks:
+    - ansible.builtin.debug:
+        msg: "Deploying to {{ environment_name }}"

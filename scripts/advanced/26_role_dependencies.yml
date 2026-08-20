@@ -1,0 +1,8 @@
+---
+- name: Compose platform roles
+  hosts: app
+  become: true
+  roles:
+    - common
+    - monitoring
+    - application

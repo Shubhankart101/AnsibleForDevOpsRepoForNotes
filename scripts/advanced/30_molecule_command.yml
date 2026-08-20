@@ -1,0 +1,10 @@
+---
+- name: Run role verification
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  tasks:
+    - ansible.builtin.command: molecule test --scenario-name default
+      args:
+        chdir: roles/application
+      changed_when: false

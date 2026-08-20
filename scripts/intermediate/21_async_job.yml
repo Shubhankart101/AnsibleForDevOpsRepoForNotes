@@ -1,0 +1,15 @@
+---
+- name: Run long maintenance asynchronously
+  hosts: all
+  become: true
+  tasks:
+    - ansible.builtin.command: /usr/local/bin/maintenance
+      async: 900
+      poll: 0
+      register: maintenance_job
+    - ansible.builtin.async_status:
+        jid: "{{ maintenance_job.ansible_job_id }}"
+      register: job_result
+      until: job_result.finished
+      retries: 30
+      delay: 10

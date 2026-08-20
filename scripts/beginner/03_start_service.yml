@@ -1,0 +1,9 @@
+---
+- name: Start a service
+  hosts: all
+  become: true
+  tasks:
+    - ansible.builtin.service:
+        name: cron
+        state: started
+        enabled: true

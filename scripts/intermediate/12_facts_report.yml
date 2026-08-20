@@ -1,0 +1,6 @@
+---
+- name: Report host facts
+  hosts: all
+  tasks:
+    - ansible.builtin.debug:
+        msg: "{{ inventory_hostname }} has {{ ansible_facts.processor_vcpus }} CPUs"
