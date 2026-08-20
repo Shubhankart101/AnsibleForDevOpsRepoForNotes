@@ -1,0 +1,51 @@
+name: Update Ansible use cases
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '30 1 * * 1'
+
+permissions:
+  contents: write
+
+jobs:
+  snapshot-use-cases:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Refresh weekly index and preserve snapshot
+        shell: bash
+        run: |
+          set -euo pipefail
+          today="$(date -u +%F)"
+          mkdir -p projects/use-case-history
+          {
+            echo "# Ansible Use Cases - ${today}"
+            echo
+            cat projects/DAILY_USE_CASES.md
+            echo
+            echo "## Azure"
+            cat projects/use-cases/azure.md
+            echo
+            echo "## AWS"
+            cat projects/use-cases/aws.md
+            echo
+            echo "## On-premises"
+            cat projects/use-cases/on-premises.md
+          } > "projects/use-case-history/${today}.md"
+
+      - name: Commit weekly snapshot
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add projects/use-case-history
+          if git diff --cached --quiet; then
+            echo "No snapshot changes to commit."
+            exit 0
+          fi
+          git commit -m "Update weekly Ansible use-case snapshot"
+          git push
