@@ -1,0 +1,23 @@
+---
+# Run with: ansible-playbook -i inventory.aws_ec2.yml aws.yml --check
+- name: Apply an AWS host baseline
+  hosts: tag_Environment_production
+  become: true
+  tasks:
+    - name: Install CloudWatch agent prerequisite
+      ansible.builtin.package:
+        name: amazon-cloudwatch-agent
+        state: present
+    - name: Enforce the application port
+      ansible.posix.firewalld:
+        port: 8080/tcp
+        permanent: true
+        immediate: true
+        state: enabled
+    - name: Write deployment metadata
+      ansible.builtin.copy:
+        dest: /etc/devtrack-release
+        content: "{{ release_version }}\n"
+        mode: '0644'
+      vars:
+        release_version: "{{ lookup('env', 'CI_COMMIT_SHA') | default('local', true) }}"

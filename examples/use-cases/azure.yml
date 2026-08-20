@@ -1,0 +1,28 @@
+---
+# Run with: ansible-playbook -i inventory.azure.yml azure.yml --check
+- name: Configure an Azure web tier
+  hosts: azure_web
+  become: true
+  collections:
+    - azure.azcollection
+  tasks:
+    - name: Ensure web package is installed
+      ansible.builtin.package:
+        name: nginx
+        state: present
+    - name: Render application configuration
+      ansible.builtin.template:
+        src: templates/app.conf.j2
+        dest: /etc/nginx/conf.d/devtrack.conf
+        mode: '0644'
+      notify: Reload nginx
+    - name: Verify service is enabled
+      ansible.builtin.service:
+        name: nginx
+        state: started
+        enabled: true
+  handlers:
+    - name: Reload nginx
+      ansible.builtin.service:
+        name: nginx
+        state: reloaded
