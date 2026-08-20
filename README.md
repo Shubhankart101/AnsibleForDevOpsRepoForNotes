@@ -10,6 +10,7 @@ Practical Ansible notes and project-oriented automation use cases for cloud and 
 
 ## Code examples and interview preparation
 
+- [120-question interview bank](interview.md)
 - [34-script library](scripts/README.md)
 - [Azure automation example](examples/use-cases/azure.yml)
 - [AWS automation example](examples/use-cases/aws.yml)
