@@ -1,6 +1,66 @@
 # Ansible Interview Question Bank
 
-This bank contains 120 questions organized by difficulty. Use the numbered scripts in `scripts/` to build answers with working examples.
+This bank contains 150 questions organized by difficulty. Use the numbered scripts in `scripts/` to build answers with working examples.
+
+## Worked Answers
+
+### Beginner: idempotent service configuration
+
+**Question:** How do you install and start a service safely?
+
+```yaml
+- name: Configure web service
+	hosts: web
+	become: true
+	tasks:
+		- ansible.builtin.package:
+				name: nginx
+				state: present
+		- ansible.builtin.service:
+				name: nginx
+				state: started
+				enabled: true
+```
+
+The desired state is declared; rerunning the playbook does not reinstall or restart unnecessarily.
+
+### Intermediate: rolling health check
+
+**Question:** How do you roll out one host at a time?
+
+```yaml
+- name: Rolling application update
+	hosts: app
+	serial: 1
+	tasks:
+		- ansible.builtin.template:
+				src: app.conf.j2
+				dest: /etc/devtrack.conf
+			notify: Restart application
+		- ansible.builtin.uri:
+				url: http://127.0.0.1:8080/health
+				status_code: 200
+```
+
+`serial: 1` limits the failure domain, while the health check gates each host.
+
+### Advanced: rescue rollback
+
+**Question:** How do you roll back after a failed deployment?
+
+```yaml
+- block:
+		- ansible.builtin.command: /opt/devtrack/bin/deploy "{{ release_id }}"
+			changed_when: true
+		- ansible.builtin.uri:
+				url: http://127.0.0.1:8080/health
+				status_code: 200
+	rescue:
+		- ansible.builtin.command: /opt/devtrack/bin/rollback
+			changed_when: true
+```
+
+The rescue block runs only after deployment or validation fails.
 
 ## Beginner: 1-40
 
