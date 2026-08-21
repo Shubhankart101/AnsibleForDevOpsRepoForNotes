@@ -314,35 +314,65 @@ The rescue block runs only after deployment or validation fails.
 ## HackerRank-Style Automation Challenges: 121-150
 
 121. Write a playbook that creates a user only when it is absent.
+**Answer:** Use an idempotent module or role, validate variables, limit the failure domain, check service health, and make rollback explicit.
 122. Write a playbook that installs packages from a variable list and reports failures.
+**Answer:** Use an idempotent module or role, validate variables, limit the failure domain, check service health, and make rollback explicit.
 123. Write a role that renders a service config and restarts only when content changes.
+**Answer:** Verify the expected digest before use and reject absolute paths or .. traversal entries before extracting or writing files.
 124. Write a playbook that parses a JSON API response and asserts a required field.
+**Answer:** Parse with the platform's structured data tool, validate required fields and types at the boundary, and return a clear nonzero failure for malformed input.
 125. Write a playbook that retries an HTTP health check with a bounded delay.
+**Answer:** Use a bounded worker pool, collect each success and exception separately, and fail the operation when the defined error threshold is exceeded.
 126. Write a playbook that finds files older than 30 days and deletes them in check mode first.
+**Answer:** Use an idempotent module or role, validate variables, limit the failure domain, check service health, and make rollback explicit.
 127. Write a playbook that compares desired ports with firewall rules and reports drift.
+**Answer:** Use an idempotent module or role, validate variables, limit the failure domain, check service health, and make rollback explicit.
 128. Write a playbook that processes hosts in batches of two.
+**Answer:** Use an idempotent module or role, validate variables, limit the failure domain, check service health, and make rollback explicit.
 129. Write a playbook that rolls back a release when a health task fails.
+**Answer:** Deploy an immutable version, run a health or smoke check, promote only on success, and invoke a tested rollback while preserving the failure in logs.
 130. Write a playbook that runs a long command asynchronously and polls its job ID.
+**Answer:** Separate validation, build, promotion, and verification jobs; use immutable artifacts, protected variables or OIDC, and manual approval for production.
 131. Write a custom filter that converts host objects into a name-to-IP map.
+**Answer:** Use an idempotent module or role, validate variables, limit the failure domain, check service health, and make rollback explicit.
 132. Write a role test that proves a second run produces no changes.
+**Answer:** Test the happy path, invalid input, timeout, retry exhaustion, and partial failure with mocks for external systems and an assertion on the final result.
 133. Validate required variables before any remote task runs.
+**Answer:** Implement the solution with validated inputs, deterministic behavior, clear failure handling, tests, and an example execution command for Ansible.
 134. Write an audit event with change ID and inventory host.
+**Answer:** Use an idempotent module or role, validate variables, limit the failure domain, check service health, and make rollback explicit.
 135. Safely handle a missing optional file.
+**Answer:** Implement the solution with validated inputs, deterministic behavior, clear failure handling, tests, and an example execution command for Ansible.
 136. Use a vaulted password without exposing it in output.
+**Answer:** Implement the solution with validated inputs, deterministic behavior, clear failure handling, tests, and an example execution command for Ansible.
 137. Group dynamic inventory instances by environment tag.
+**Answer:** Parse the input into structured records, use a map or counter for aggregation, sort only when ranking is required, and test empty, duplicate, and boundary inputs.
 138. Ensure an Azure resource group has required tags.
+**Answer:** Parse the input into structured records, use a map or counter for aggregation, sort only when ranking is required, and test empty, duplicate, and boundary inputs.
 139. Discover AWS instances and verify their security group.
+**Answer:** Parse the input into structured records, use a map or counter for aggregation, sort only when ranking is required, and test empty, duplicate, and boundary inputs.
 140. Fail deployment when a certificate has fewer than 14 days remaining.
+**Answer:** Deploy an immutable version, run a health or smoke check, promote only on success, and invoke a tested rollback while preserving the failure in logs.
 141. Validate backup size and timestamp.
+**Answer:** Implement the solution with validated inputs, deterministic behavior, clear failure handling, tests, and an example execution command for Ansible.
 142. Restore the previous release from a symlink.
+**Answer:** Deploy an immutable version, run a health or smoke check, promote only on success, and invoke a tested rollback while preserving the failure in logs.
 143. Execute a database migration exactly once.
+**Answer:** Implement the solution with validated inputs, deterministic behavior, clear failure handling, tests, and an example execution command for Ansible.
 144. Skip production changes unless an approval variable is true.
+**Answer:** Implement the solution with validated inputs, deterministic behavior, clear failure handling, tests, and an example execution command for Ansible.
 145. Collect per-host results on localhost.
+**Answer:** Use an idempotent module or role, validate variables, limit the failure domain, check service health, and make rollback explicit.
 146. Use `block`, `rescue`, and `always` for cleanup.
+**Answer:** Implement the solution with validated inputs, deterministic behavior, clear failure handling, tests, and an example execution command for Ansible.
 147. Limit a destructive task to an explicit allow-list.
+**Answer:** Implement the solution with validated inputs, deterministic behavior, clear failure handling, tests, and an example execution command for Ansible.
 148. Convert command output into structured facts.
+**Answer:** Implement the solution with validated inputs, deterministic behavior, clear failure handling, tests, and an example execution command for Ansible.
 149. Test a role under two operating-system families.
+**Answer:** Test the happy path, invalid input, timeout, retry exhaustion, and partial failure with mocks for external systems and an assertion on the final result.
 150. Build an idempotent deployment playbook with validation, rollback, and audit output.
+**Answer:** Deploy an immutable version, run a health or smoke check, promote only on success, and invoke a tested rollback while preserving the failure in logs.
 
 ## Executable Answers
 
