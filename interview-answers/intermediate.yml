@@ -1,0 +1,19 @@
+---
+- name: Roll out safely
+  hosts: app
+  become: true
+  serial: 1
+  tasks:
+    - ansible.builtin.template:
+        src: app.conf.j2
+        dest: /etc/devtrack.conf
+        mode: '0644'
+      notify: Restart application
+    - ansible.builtin.uri:
+        url: http://127.0.0.1:8080/health
+        status_code: 200
+  handlers:
+    - name: Restart application
+      ansible.builtin.service:
+        name: devtrack
+        state: restarted

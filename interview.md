@@ -163,3 +163,9 @@ This bank contains 120 questions organized by difficulty. Use the numbered scrip
 148. Convert command output into structured facts.
 149. Test a role under two operating-system families.
 150. Build an idempotent deployment playbook with validation, rollback, and audit output.
+
+## Executable Answers
+
+- [Beginner answers](interview-answers/beginner.yml): idempotent package and service configuration.
+- [Intermediate answers](interview-answers/intermediate.yml): rolling deployment, handlers, and health checks.
+- [Advanced answers](interview-answers/advanced.yml): health-gated deployment with rescue rollback.

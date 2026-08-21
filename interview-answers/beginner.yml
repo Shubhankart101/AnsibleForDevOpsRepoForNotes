@@ -1,0 +1,14 @@
+---
+- name: Install and start a web service
+  hosts: web
+  become: true
+  vars:
+    package_name: nginx
+  tasks:
+    - ansible.builtin.package:
+        name: "{{ package_name }}"
+        state: present
+    - ansible.builtin.service:
+        name: "{{ package_name }}"
+        state: started
+        enabled: true

@@ -1,0 +1,17 @@
+---
+- name: Health-gated deployment with rollback
+  hosts: app
+  serial: 1
+  tasks:
+    - block:
+        - ansible.builtin.command: /opt/devtrack/bin/deploy "{{ release_id }}"
+          changed_when: true
+        - ansible.builtin.uri:
+            url: http://127.0.0.1:8080/health
+            status_code: 200
+      rescue:
+        - ansible.builtin.command: /opt/devtrack/bin/rollback
+          changed_when: true
+      always:
+        - ansible.builtin.debug:
+            msg: "deployment={{ release_id }} host={{ inventory_hostname }}"
