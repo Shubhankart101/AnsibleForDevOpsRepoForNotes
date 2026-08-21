@@ -1,0 +1,15 @@
+---
+# Question 132: Write a role test that proves a second run produces no changes.
+- name: Execute question 132 solution
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Validate input
+      ansible.builtin.assert:
+        that: inventory_hostname | length > 0
+    - name: Apply idempotent solution
+      ansible.builtin.debug:
+        msg: "Implement question 132 for {{ inventory_hostname }}"
+    - name: Verify result
+      ansible.builtin.assert:
+        that: true

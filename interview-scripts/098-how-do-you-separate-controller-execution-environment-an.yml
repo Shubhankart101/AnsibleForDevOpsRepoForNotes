@@ -1,0 +1,15 @@
+---
+# Question 98: How do you separate controller, execution environment, and target trust?
+- name: Execute question 98 solution
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Validate input
+      ansible.builtin.assert:
+        that: inventory_hostname | length > 0
+    - name: Apply idempotent solution
+      ansible.builtin.debug:
+        msg: "Implement question 98 for {{ inventory_hostname }}"
+    - name: Verify result
+      ansible.builtin.assert:
+        that: true

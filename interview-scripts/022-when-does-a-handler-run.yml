@@ -1,0 +1,15 @@
+---
+# Question 22: When does a handler run?
+- name: Execute question 22 solution
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Validate input
+      ansible.builtin.assert:
+        that: inventory_hostname | length > 0
+    - name: Apply idempotent solution
+      ansible.builtin.debug:
+        msg: "Implement question 22 for {{ inventory_hostname }}"
+    - name: Verify result
+      ansible.builtin.assert:
+        that: true

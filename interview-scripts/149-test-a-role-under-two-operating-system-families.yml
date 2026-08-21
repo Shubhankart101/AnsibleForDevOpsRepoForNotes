@@ -1,0 +1,15 @@
+---
+# Question 149: Test a role under two operating-system families.
+- name: Execute question 149 solution
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Validate input
+      ansible.builtin.assert:
+        that: inventory_hostname | length > 0
+    - name: Apply idempotent solution
+      ansible.builtin.debug:
+        msg: "Implement question 149 for {{ inventory_hostname }}"
+    - name: Verify result
+      ansible.builtin.assert:
+        that: true

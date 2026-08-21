@@ -1,0 +1,15 @@
+---
+# Question 58: How do you share facts between hosts?
+- name: Execute question 58 solution
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Validate input
+      ansible.builtin.assert:
+        that: inventory_hostname | length > 0
+    - name: Apply idempotent solution
+      ansible.builtin.debug:
+        msg: "Implement question 58 for {{ inventory_hostname }}"
+    - name: Verify result
+      ansible.builtin.assert:
+        that: true

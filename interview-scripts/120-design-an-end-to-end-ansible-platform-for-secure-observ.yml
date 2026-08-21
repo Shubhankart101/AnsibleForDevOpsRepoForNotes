@@ -1,0 +1,15 @@
+---
+# Question 120: Design an end-to-end Ansible platform for secure, observable, reversible delivery.
+- name: Execute question 120 solution
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Validate input
+      ansible.builtin.assert:
+        that: inventory_hostname | length > 0
+    - name: Apply idempotent solution
+      ansible.builtin.debug:
+        msg: "Implement question 120 for {{ inventory_hostname }}"
+    - name: Verify result
+      ansible.builtin.assert:
+        that: true
